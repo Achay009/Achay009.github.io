@@ -1,6 +1,9 @@
 const btn = document.getElementById("btn");
 
 btn.addEventListener("click", function (e) {
+    document.querySelector(".formSuccess").style.display = "none";
+    document.querySelector(".formError").style.display = "none";
+
     e.preventDefault();
     document.querySelector(".loader").style.display = "block";
     console.log("Api call has started");
@@ -23,21 +26,26 @@ btn.addEventListener("click", function (e) {
             if (response.status == "success") {
                 console.log(response);
                 document.querySelector(".loader").style.display = "none";
-                alert("Validation Succes " + response.data.first_name + " " + response.data.last_name);
+                document.querySelector(".formSuccess").style.display = "block";
+                document.querySelector(".formSuccess").innerText = "Validation Success "+ response.data.first_name + " " + response.data.last_name;
+               
             } else {
                 document.querySelector(".loader").style.display = "none";
-                alert("Cannot find BVN holder");
+                document.querySelector(".formError").style.display = "block";
+                document.querySelector(".formError").innerText = "Cannot find BVN Holder";
+                
             }
 
         }).catch((error) =>{
             document.querySelector(".loader").style.display = "none";
-          alert("Opps Something Occured try again")
+            document.querySelector(".formError").style.display = "block";
+            document.querySelector(".formError").innerText = "Oops!! an Error Occured";
+         
+        
           
             
         });
 
-window.
-   
 
     console.log("Api call has finished");
 
