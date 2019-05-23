@@ -60,4 +60,7 @@ html,body{
     border-width: 2px;
     border-style: solid;
   }
-  
+.center{
+    margin: auto;
+ max-width: 300px;
+}  
