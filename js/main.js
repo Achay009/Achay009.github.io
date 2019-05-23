@@ -19,24 +19,24 @@ btn.addEventListener("click", function (e) {
     fetch(url, fetchData)
         .then(res => res.json())
         .then((response) => {
+           
             if (response.status == "success") {
                 console.log(response);
+                document.querySelector(".loader").style.display = "none";
                 alert("Validation Succes " + response.data.first_name + " " + response.data.last_name);
             } else {
+                document.querySelector(".loader").style.display = "none";
                 alert("Cannot find BVN holder");
             }
-            document.querySelector(".loader").style.display = "none";
 
         }).catch((error) =>{
-
+            document.querySelector(".loader").style.display = "none";
           alert("Opps Something Occured try again")
-          document.querySelector(".loader").style.display = "none";
-
-
+          
             
         });
 
-
+window.
    
 
     console.log("Api call has finished");
