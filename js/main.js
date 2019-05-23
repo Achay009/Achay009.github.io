@@ -26,7 +26,15 @@ btn.addEventListener("click", function (e) {
                 alert("Cannot find BVN holder");
             }
             document.querySelector(".loader").style.display = "none";
-        }).catch(error => alert("Opps Something Occured try again"));
+
+        }).catch((error) =>{
+
+          alert("Opps Something Occured try again")
+          document.querySelector(".loader").style.display = "none";
+
+
+            
+        });
 
 
    
