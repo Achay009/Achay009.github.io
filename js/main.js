@@ -2,7 +2,7 @@ const btn = document.getElementById("btn");
 
 btn.addEventListener("click", function (e) {
     document.querySelector(".formSuccess").style.display = "none";
-    document.querySelector(".formError").style.display = "none";
+   document.querySelector(".formError").style.display = "none";
 
     e.preventDefault();
     document.querySelector(".loader").style.display = "block";
