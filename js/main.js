@@ -21,7 +21,7 @@ btn.addEventListener("click", function (e) {
         }
     }
     //validate bvn length and property
-if(!isNaN(bvn) || bvn.length == 11){
+if(!isNaN(bvn) && bvn.length == 11){
     fetch(url, fetchData)
     .then(res => res.json())
     .then((response) => {
