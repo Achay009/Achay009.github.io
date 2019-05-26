@@ -20,6 +20,8 @@ btn.addEventListener("click", function (e) {
             'Content-Type': 'application/json'
         }
     }
+    console.log(bvn.length);
+    console.log(isNAN(bvn));
     //validate bvn length and property
 if(!isNaN(bvn) && bvn.length == 11){
     fetch(url, fetchData)
