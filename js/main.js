@@ -18,7 +18,7 @@ btn.addEventListener("click", function (e) {
             'Content-Type': 'application/json'
         }
     }
-if(!isNaN(bvn)){
+if(!isNaN(bvn)&& bvn.length ==11){
     fetch(url, fetchData)
     .then(res => res.json())
     .then((response) => {
@@ -26,11 +26,13 @@ if(!isNaN(bvn)){
         if (response.status == "success") {
             console.log(response);
             document.querySelector(".loader").style.display = "none";
+            document.querySelector(".formError").style.display = "none";
             document.querySelector(".formSuccess").style.display = "block";
             document.querySelector(".formSuccess").innerText = "Validation Success "+ response.data.first_name + " " + response.data.last_name;
            
         } else {
             document.querySelector(".loader").style.display = "none";
+            document.querySelector(".formSuccess").style.display = "none";
             document.querySelector(".formError").style.display = "block";
             document.querySelector(".formError").innerText = "Cannot find BVN Holder";
             
@@ -38,6 +40,7 @@ if(!isNaN(bvn)){
 
     }).catch((error) =>{
         document.querySelector(".loader").style.display = "none";
+        document.querySelector(".formSuccess").style.display = "none";
         document.querySelector(".formError").style.display = "block";
         document.querySelector(".formError").innerText = "Oops!! an Error Occured";
      
@@ -54,11 +57,11 @@ console.log("Api call has finished");
 
     
 }else{
-    
+    document.querySelector(".formSuccess").style.display = "none";
     document.querySelector(".loader").style.display = "none";
     document.querySelector(".formError").style.display = "block";
     document.querySelector(".formError").innerText = "Oops!! please Enter BVN number";
-   // btn.addEventListener('click',)   would do it later...
+
  
 
 
