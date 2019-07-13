@@ -1,3 +1,18 @@
+window.sr = ScrollReveal();
+
+sr.reveal('.navbar',{
+     duration:2000,
+     origin:'bottom'
+});
+
+sr.reveal('.showcase-left',{
+     duration:2000,
+     origin:'left',
+     distance:'300px'
+});
+
+
+
 // set up text to print, each item in array is new line
 var aText = new Array(
     "Hello I am Uche Echesurum and I am a Sofware developer." 
@@ -36,3 +51,30 @@ var aText = new Array(
     
     
     typewriter();
+
+    sr.reveal('.showcase-img-left',{
+     duration:2000,
+     origin:'left',
+     distance:'300px'
+});
+sr.reveal('.showcase-desc-right',{
+     duration:2000,
+     origin:'right',
+     distance:'300px'
+});
+sr.reveal('.showcase-img2-top',{
+     duration:2000,
+     origin:'top',
+     distance:'300px'
+});
+sr.reveal('.showcase-works-bottom',{
+     duration:2000,
+     origin:'bottom',
+     distance:'300px'
+});
+
+sr.reveal('showcase-contact',{
+     duration:2000,
+     origin:'top',
+     distance:'300px'
+});

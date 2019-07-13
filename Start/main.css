@@ -1,5 +1,5 @@
 body{
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
 #showcase h1{
@@ -7,8 +7,8 @@ body{
     margin-bottom:20px;
 }
 img.svg{
-    width:6%;
-    height:6%;
+    width:8%;
+    height:8%;
     border-radius: 50%;
 }
 .navbar-brand{
@@ -61,14 +61,14 @@ img.About{
 }
 
 .sectionAbout{
-    margin-top: 8%;
+    margin-top: 10%;
     margin-bottom: 10%;
 }
 
 
 /********Works********/
 .sectionWorks{
-    margin-top: 8%;
+    margin-top: 10%;
     margin-bottom: 10%;
 
 }
@@ -115,7 +115,7 @@ img.works{
 
 /*********Contact***********/
 .sectionContact{
-    margin-top: 8%;
+    margin-top: 10%;
     margin-bottom: 10%;
 }
 
