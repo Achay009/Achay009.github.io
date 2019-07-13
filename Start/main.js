@@ -60,21 +60,27 @@ var aText = new Array(
 sr.reveal('.showcase-desc-right',{
      duration:2000,
      origin:'right',
-     distance:'300px'
+     distance:'300px',
+     viewFactor:0.2
 });
 sr.reveal('.showcase-img2-top',{
      duration:2000,
      origin:'top',
-     distance:'300px'
+     distance:'300px',
+     viewFactor:0.2
 });
 sr.reveal('.showcase-works-bottom',{
      duration:2000,
      origin:'bottom',
-     distance:'300px'
+     distance:'300px',
+     viewFactor:0.2
+
 });
 
 sr.reveal('showcase-contact',{
      duration:2000,
      origin:'top',
-     distance:'300px'
+     distance:'300px',
+     viewFactor:0.2
+
 });
