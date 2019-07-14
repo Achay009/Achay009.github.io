@@ -66,14 +66,14 @@ sr.reveal('.showcase-desc-right',{
 sr.reveal('.showcase-img2-top',{
      duration:2000,
      origin:'top',
-     distance:'300px',
-     viewFactor:0.2
+     distance:'300px'
+     
 });
 sr.reveal('.showcase-works-bottom',{
      duration:2000,
      origin:'bottom',
-     distance:'300px',
-     viewFactor:0.2
+     distance:'300px'
+     
 
 });
 
