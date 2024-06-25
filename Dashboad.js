@@ -26,7 +26,7 @@ export default class extends ExtendedView {
         </header>
 
         <figure class="md:flex max-w-4xl mx-auto shadow-2xl bg-slate-100 rounded-lg p-8 md:p-0 dark:bg-slate-800">
-            <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-md rounded-full mx-auto" src="./profile.jpeg" alt="" width="384" height="512">
+            <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-md rounded-full mx-auto" src="https://firebasestorage.googleapis.com/v0/b/react-my-burger-26c0d.appspot.com/o/profile.jpeg?alt=media&token=3f4ea7fb-86fe-42ad-aabd-b8f1f5137cdd" alt="" width="384" height="512">
             <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
                 <blockquote>
                     <p class="text-lg font-medium">
