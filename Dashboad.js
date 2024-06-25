@@ -25,12 +25,25 @@ export default class extends ExtendedView {
             </div>
         </header>
 
-        <div class="max-w-4xl mx-auto px-10 my-2 py-6  rounded-lg shadow-2xl">
-            <div class="mt-2">
-                <p class="font-bold text-2xl ">Hi My name is Uche and this is where I'd post things I learn about , I like to build stuff I find interesting, would be posting my project and article on here ...cheers!! </p>
+        <figure class="md:flex max-w-4xl mx-auto shadow-2xl bg-slate-100 rounded-lg p-8 md:p-0 dark:bg-slate-800">
+            <img class="w-24 h-24 md:w-48 md:h-auto md:rounded-md rounded-full mx-auto" src="./profile.jpeg" alt="" width="384" height="512">
+            <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+                <blockquote>
+                    <p class="text-lg font-medium">
+                        “Hi My name is Uche and this is where I'd post things I learn about , I like to learn/build stuff I find interesting, would be posting my project and article on here ...cheers!! ”
+                    </p>
+                </blockquote>
             </div>
-        </div>
+        </figure>
         `
     }
 }
 
+{/* <figcaption class="font-medium">
+    <div class="text-sky-500 dark:text-sky-400">
+        Sarah Dayan
+    </div>
+    <div class="text-slate-700 dark:text-slate-500">
+        Staff Engineer, Algolia
+    </div>
+</figcaption> */}
