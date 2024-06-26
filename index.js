@@ -1,4 +1,5 @@
 import Dashboad from "./Dashboad.js"
+import NotFound from "./NotFound.js"
 
 const navigateTo = (url)=> {
     history.pushState(null,null, url)
@@ -9,7 +10,7 @@ const navigateTo = (url)=> {
 const router = async () => {
     const routes = [
         {path: '/', view: Dashboad},
-        // {path: '/posts', view: () => console.log("viewing post")},
+        // {path: '/posts', view: NotFound},
         // {path: '/settings', view: () => console.log("viewing settings")}
     ]
 
@@ -25,6 +26,10 @@ const router = async () => {
     const match = matches.find(item => item.matched)
 
     const view = new match.route.view()
+
+    if (!match){
+        view = new NotFound()
+    }
 
     document.querySelector('#app').innerHTML = await view.getHtml()
 }

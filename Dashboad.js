@@ -17,7 +17,7 @@ export default class extends ExtendedView {
                     </div>
 
                     <div class="hidden ml-10 lg:flex lg:items-center lg:space-x-10">
-                        <a href="#" title="" class="text-xl font-bold text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Posts </a>
+                        <a href="#" title="" class="text-xl font-bold text-white transition-all duration-200 hover:text-blue-600 ${location.pathname == "/" ? "text-blue-600" : ""} "> Posts </a>
 
                         <a href="#" title="" class="text-xl font-bold text-white transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Projects </a>
                     </div>
