@@ -13,7 +13,7 @@ export default class extends ExtendedView {
             <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
                 <nav class="relative flex items-center justify-center h-16 text-white lg:rounded-md shadow-2xl lg:shadow-2xl lg:h-24 lg:px-8 lg:py-6">
                     <div class="flex-shrink-0 cursor-pointer">
-                        <p class=" font-bold text-2xl">Achay</p>
+                        <p class=" font-bold text-2xl">Home</p>
                     </div>
 
                     <div class="hidden ml-10 lg:flex lg:items-center lg:space-x-10">
@@ -30,7 +30,7 @@ export default class extends ExtendedView {
             <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
                 <blockquote>
                     <p class="text-lg font-medium">
-                        “Hi My name is Uche and this is where I'd post things I learn about , I like to learn/build stuff I find interesting, would be posting my project and article on here ...cheers!! ”
+                        “Hi My name is Uche and this is where I'd post things I learn about , I like to learn/build stuff I find interesting, would be posting my project and some writings on here ...cheers!! ”
                     </p>
                 </blockquote>
             </div>
