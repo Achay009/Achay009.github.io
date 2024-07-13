@@ -1,6 +1,6 @@
-import { ExtendedView } from "./ExtendedView.js"
+import { AbstractView } from "./AbstractView.js"
 
-export default class extends ExtendedView {
+export default class extends AbstractView {
     constructor(){
         super()
         this.setTitle("Achay | Corner")

@@ -1,6 +1,6 @@
-export class ExtendedView {
-    constructor(){
-
+export class AbstractView {
+    constructor(query) {
+        this.query = query;
     }
 
     setTitle (title){

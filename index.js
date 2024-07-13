@@ -6,26 +6,47 @@ const navigateTo = (url)=> {
     router()
 }
 
+const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
+
+const getQuery = href => {
+    // console.log('matching....:',href.split('?'))
+
+    const string = href.split('?')[1]
+    const query = new Map()
+
+    if (string) {
+        const pairs = string.split('&');
+        for (const pair of pairs) {
+            const [key, value] = pair.split('=');
+            query[key] = decodeURIComponent(value.replace(/\+/g, ' '));
+        }
+    }
+    // console.log('this are the params....:', query)
+    return query
+    // console.log('this are the params....:', query)
+};
 
 const router = async () => {
     const routes = [
         {path: '/', view: Dashboad},
-        // {path: '/posts', view: NotFound},
-        // {path: '/settings', view: () => console.log("viewing settings")}
+        {path: '/posts', view: NotFound},
+        {path: '/projects', view: NotFound}
     ]
 
     const matches = routes.map(route => {
+        console.log(pathToRegex(route.path))
         return {
             route : route,
-            matched : route.path == location.pathname
+            matched : route.path == location.pathname.match(pathToRegex(route.path))
         }
     })
 
-    console.log(matches)
+    // console.log(matches)
 
     const match = matches.find(item => item.matched)
+    // console.log("match : ", getParams(match))
 
-    const view = new match.route.view()
+    const view = new match.route.view(getQuery(location.href))
 
     if (!match){
         view = new NotFound()
@@ -45,20 +66,4 @@ document.addEventListener("DOMContentLoaded", () => {
     router()
 })
 
-
-
-
-
-export class ExtendedView {
-    constructor(){
-
-    }
-
-    setTitle (title){
-        document.title=title
-    }
-
-    async getHtml(){
-        return ''
-    }
-}
+window.addEventListener("popstate", router);
