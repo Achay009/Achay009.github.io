@@ -10,29 +10,12 @@ export default class extends AbstractView {
         console.log('post...',query)
     }
 
-    // async readFileFromServer(file){
-    //     let rawFile = await fetch()
-    // }
-
     async getMarkdownPost(){
-
         let response = await fetch(`./${this.query.post}.md`)
         if (!response.ok) window.location.replace('/404.html')
         let text = await response.text()
-        // console.log('this is the text', text)
-        // const markdown = marked.parse(text)
-
         const md = markdownIt()
         const result = md.render(text);
-
-
-        console.log('markdown...',result)
-        // return `
-        // <a href="/" class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4">Back to Homepage</a>
-        //     <div class="flex justify-center py-5">
-        //         ${markdown}
-        //     </div>
-        // `
 
         return `<article class=" markdown-body">${result}</article>`
     }
