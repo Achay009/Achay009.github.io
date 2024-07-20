@@ -1,5 +1,7 @@
 import { AbstractView } from "./AbstractView.js"
-import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+// import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+import markdownIt from 'https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/+esm'
+import { navigateTo } from "./index.js"
 
 export default class extends AbstractView {
     constructor(query){
@@ -14,12 +16,17 @@ export default class extends AbstractView {
 
     async getMarkdownPost(){
 
-        let response = await fetch("./hello.md")
-        if (!response.ok) throw new Error(`Response status: ${response.status}`)
+        let response = await fetch(`./${this.query.post}.md`)
+        if (!response.ok) window.location.replace('/404.html')
         let text = await response.text()
-        console.log('this is the text', text)
-        const markdown = marked.parse(text)
-        console.log('markdown...',markdown)
+        // console.log('this is the text', text)
+        // const markdown = marked.parse(text)
+
+        const md = markdownIt()
+        const result = md.render(text);
+
+
+        console.log('markdown...',result)
         // return `
         // <a href="/" class="inline-flex text-white bg-primary-600 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:focus:ring-primary-900 my-4">Back to Homepage</a>
         //     <div class="flex justify-center py-5">
@@ -27,7 +34,7 @@ export default class extends AbstractView {
         //     </div>
         // `
 
-        return markdown
+        return `<article class=" markdown-body">${result}</article>`
     }
 
 
@@ -50,7 +57,7 @@ export default class extends AbstractView {
             </div>
         </header>
 
-        <figure class="md:flex max-w-4xl mx-auto shadow-2xl bg-slate-100 rounded-lg p-8 md:p-0 dark:bg-slate-800">
+        <figure class="md:flex max-w-4xl mx-auto shadow-2xl  rounded-lg p-8 md:p-0 ">
             <img class="w-24 h-24 md:w-24 md:h-auto md:rounded-md rounded-full mx-auto" src="https://firebasestorage.googleapis.com/v0/b/react-my-burger-26c0d.appspot.com/o/profile.jpeg?alt=media&token=3f4ea7fb-86fe-42ad-aabd-b8f1f5137cdd" alt="" width="384" height="512">
             <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
                 <blockquote>

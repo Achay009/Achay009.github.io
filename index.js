@@ -1,7 +1,7 @@
 import Dashboad from "./Dashboad.js"
 import NotFound from "./NotFound.js"
 
-const navigateTo = (url)=> {
+export const navigateTo = (url)=> {
     history.pushState(null,null, url)
     router()
 }
