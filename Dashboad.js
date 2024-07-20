@@ -1,23 +1,25 @@
 import { AbstractView } from "./AbstractView.js"
-// import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
-import markdownIt from 'https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/+esm'
-import { navigateTo } from "./index.js"
+import { marked } from "https://cdn.jsdelivr.net/npm/marked/lib/marked.esm.js";
+// import markdownIt from 'https://cdn.jsdelivr.net/npm/markdown-it@14.1.0/+esm'
+// import { navigateTo } from "./index.js"
 
 export default class extends AbstractView {
     constructor(query){
         super(query)
         this.setTitle(query.post || "Achay's")
-        console.log('post...',query)
+        // console.log('post...',query)
     }
 
     async getMarkdownPost(){
         let response = await fetch(`./${this.query.post}.md`)
         if (!response.ok) window.location.replace('/404.html')
         let text = await response.text()
-        const md = markdownIt()
-        const result = md.render(text);
 
-        return `<article class=" markdown-body">${result}</article>`
+        const markdown = marked.parse(text)
+        // const md = markdownIt()
+        // const result = md.render(text);
+
+        return `<article class=" markdown-body">${markdown}</article>`
     }
 
 
