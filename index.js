@@ -1,5 +1,7 @@
 import Home from "./Home.js"
 import NotFound from "./NotFound.js"
+import Posts from "./Posts.js"
+import Projects from "./Projects.js"
 
 export const navigateTo = (url)=> {
     history.pushState(null,null, url)
@@ -29,8 +31,8 @@ const getQuery = href => {
 const router = async () => {
     const routes = [
         {path: '/', view: Home},
-        {path: '/posts', view: NotFound},
-        {path: '/projects', view: NotFound}
+        {path: '/posts', view: Posts},
+        {path: '/projects', view: Projects}
     ]
 
     const matches = routes.map(route => {
