@@ -1,4 +1,4 @@
-import Dashboad from "./Dashboad.js"
+import Home from "./Home.js"
 import NotFound from "./NotFound.js"
 
 export const navigateTo = (url)=> {
@@ -28,7 +28,7 @@ const getQuery = href => {
 
 const router = async () => {
     const routes = [
-        {path: '/', view: Dashboad},
+        {path: '/', view: Home},
         {path: '/posts', view: NotFound},
         {path: '/projects', view: NotFound}
     ]

@@ -1,3 +1,6 @@
+
+# HELLO WORLD!!
+
 ---
 __Advertisement :)__
 
@@ -232,7 +235,7 @@ Term 2
 
 ### [Abbreviations](https://github.com/markdown-it/markdown-it-abbr)
 
-This is HTML abbreviation example.
+This is HTML abbreviation example.😅 
 
 It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
