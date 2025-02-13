@@ -46,7 +46,7 @@ export default class extends AbstractView {
                                 </p>
                                 </div>
                             </div>
-                            
+
                         </address>
                         <span class="text-xl text-gray-500 dark:text-gray-400 font-medium"> Social  </span>
                     </header>
@@ -114,3 +114,6 @@ export default class extends AbstractView {
         Staff Engineer, Algolia
     </div>
 </figcaption> */}
+
+
+
