@@ -56,16 +56,16 @@ export default class extends AbstractView {
 
                     <article class="flex text-gray-300 dark:text-gray-200 text-base flex-col text-white items-start justify-between">
                         <div class="flex items-center gap-x-4 text-base">
-                            <time datetime="2020-03-16" class="text-gray-400"><i>Nov 21, 2024</i></time>
+                            <time datetime="2025-02-22" class="text-gray-400"><i>Feb 22, 2025</i></time>
                         </div>
                         <div class="group relative">
                             <h3 class="mt-3 text-lg/6 font-semibold text-blue-400  group-hover:text-blue-600">
-                                <a href="/?post=hello">
+                                <a href="/?post=payment-system-design">
                                     <span class="absolute inset-0"></span>
-                                    Hello world !!
+                                    System Design Study 01 - Payment System
                                 </a>
                             </h3>
-                            <p class="mt-5 line-clamp-3">This is the first post on this blog i hope i get to do more and more !!</p>
+                            <p class="mt-5 line-clamp-3">Let's talk about a payment system design for interviews</p>
                         </div>
                     </article>
                 </div>
