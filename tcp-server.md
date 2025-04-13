@@ -1,16 +1,16 @@
 # Understanding TCP Protocol/Server by building one in Go
 
-Ever wondered what happens within communication between a HTTP(*__"A TCP-Based Protocol on the application layer of the [TCP/IP Model](https://www.splunk.com/en_us/blog/learn/tcp-ip.html) "__*) Server and Client, well in this article we would be building our own TCP Server and connecting to it. TCP(*__" Transmission Control Protocol "__*) is a Protocol on which HTTP is built on, we can as well say HTTP is a wrapper around TCP, as a matter of fact HTTP is a TCP-Based Protocol, When we send a request to a HTTP Server we expect a response.
+>Ever wondered what happens within communication between a HTTP(*__"A TCP-Based Protocol on the application layer of the [TCP/IP Model](https://www.splunk.com/en_us/blog/learn/tcp-ip.html) "__*) Server and Client, well in this article we would be building our own TCP Server and connecting to it. TCP(*__" Transmission Control Protocol "__*) is a Protocol on which HTTP is built on, we can as well say HTTP is a wrapper around TCP, as a matter of fact HTTP is a TCP-Based Protocol, When we send a request to a HTTP Server we expect a response.
 
-Practically *__" A Server is just a program running in a loop waiting to accept a connection "__* and its on this statement we would build our TCP based server and design our protocol for a chat system (*__" we are actually building a TCP-Based chat protocol and server  "__*)
+>Practically *__" A Server is just a program running in a loop waiting to accept a connection "__* and its on this statement we would build our TCP based server and design our protocol for a chat system (*__" we are actually building a TCP-Based chat protocol and server  "__*)
 
-In this Article we are going to be making use __[Go Programming language](https://go.dev/)__ to build a TCP server and a simple TCP-Based chat protocol
+>In this Article we are going to be making use __[Go Programming language](https://go.dev/)__ to build a TCP server and a simple TCP-Based chat protocol
 
 
 ## Design
-First off we look at the protoocl which would dictate how our TCP Server is going to accept and process connections. we are buildiing a text-based protocol, meaning that the data that travels is not binary, but just ASCII text. The advantage of text-based protocols is that a client can practically open a TCP connection to a server that implements the protocol and talk to it by sending ASCII characters.
+>First off we look at the protoocl which would dictate how our TCP Server is going to accept and process connections. we are buildiing a text-based protocol, meaning that the data that travels is not binary, but just ASCII text. The advantage of text-based protocols is that a client can practically open a TCP connection to a server that implements the protocol and talk to it by sending ASCII characters.
 
-Clients can connect to and communicate with a SLCK server through a TCP socket, using a set of commands and conventions that we will define next.
+>Clients can connect to and communicate with a SLCK server through a TCP socket, using a set of commands and conventions that we will define next.
 
 ## Protocol conventions
 for our protocol we follow some simple conventions:
@@ -171,7 +171,7 @@ type client struct {
 ```
 
 
-In `client.go` we read the data in a `bytes` buffer hitting the server via the client connection created in function`readLoop` then we parse the request protocol with its data sent to determine what  to do with the data sent in the function `handle` the connection, here we determine the method of the request protocol sent to the server if its a`REG` or a `MSG` this are in functions `reg` and `msg` respectively and we send the requirements for the logic(METHOD) back to the server to handle, lastly we have an `err` function to handle any error we send back to the client connection
+>In `client.go` we read the data in a `bytes` buffer hitting the server via the client connection created in function`readLoop` then we parse the request protocol with its data sent to determine what  to do with the data sent in the function `handle` the connection, here we determine the method of the request protocol sent to the server if its a`REG` or a `MSG` this are in functions `reg` and `msg` respectively and we send the requirements for the logic(METHOD) back to the server to handle, lastly we have an `err` function to handle any error we send back to the client connection
 
 in `client.go`
 ``` go
@@ -295,10 +295,10 @@ in `client.go`
 	    c.conn.Write([]byte("Chat protocol client Error :  " + err.Error()))
     }
 ```
-And that is all we need for the `client.go` file, we can read the data buffer sent and we can handle different methods our protocol is prepared for , up next up we go to look at the next file  `server.go`
+>And that is all we need for the `client.go` file, we can read the data buffer sent and we can handle different methods our protocol is prepared for , up next up we go to look at the next file  `server.go`
 
 
-we define the `server` structure as seen in the code below
+>we define the `server` structure as seen in the code below
 
 ``` go
     package main
@@ -321,7 +321,7 @@ we define the `server` structure as seen in the code below
     }
 ```
 
-In `server.go` we run a loop in the `run` function to listen for data sent to the channels on the __server__ struct these channels include __protocol__ channel __deregistrations__ channel and the __registrations__ channel , when data is sent to data sent to any of these channel are handled in the `switch` statement which performs the conditioned required on any data sent to any of the above channels 
+>In `server.go` we run a loop in the `run` function to listen for data sent to the channels on the __server__ struct these channels include __protocol__ channel __deregistrations__ channel and the __registrations__ channel , when data is sent to data sent to any of these channel are handled in the `switch` statement which performs the conditioned required on any data sent to any of the above channels 
 
 in `server.go`
 
@@ -365,7 +365,7 @@ client data sent to the __registrations__ channel registers the client on the se
     }
 ```
 
-Data sent to the __protocol__ channel are checked for their respective protocol methods , for now we only handle the `MSG` method of the protocol, which is handled in the `message` function, here client reads the remaining data from the protocol request and which has the recepient of the message and the message sent , if the recepient connection (recepient is also another client connection) the server writes the message to the recepient connection stored in the client structure, see code below
+> Data sent to the __protocol__ channel are checked for their respective protocol methods , for now we only handle the `MSG` method of the protocol, which is handled in the `message` function, here client reads the remaining data from the protocol request and which has the recepient of the message and the message sent , if the recepient connection (recepient is also another client connection) the server writes the message to the recepient connection stored in the client structure, see code below
 
 ``` go
 func (h *serverHub) message(senderId string, recepientId string, message []byte){
@@ -384,6 +384,10 @@ func (h *serverHub) message(senderId string, recepientId string, message []byte)
     }
 }
 ```
+
+
+<!-- > [!NOTE] -->
+> Useful information that users should know, even when skimming content.
 
 
 
