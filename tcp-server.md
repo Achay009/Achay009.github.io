@@ -367,7 +367,23 @@ client data sent to the __registrations__ channel registers the client on the se
 
 Data sent to the __protocol__ channel are checked for their respective protocol methods , for now we only handle the `MSG` method of the protocol, which is handled in the `message` function, here client reads the remaining data from the protocol request and which has the recepient of the message and the message sent , if the recepient connection (recepient is also another client connection) the server writes the message to the recepient connection stored in the client structure, see code below
 
-
+``` go
+func (h *serverHub) message(senderId string, recepientId string, message []byte){
+    if sender, ok := h.clients[senderId]; ok {
+        if recepientId[0] == '@' {
+            if user, ok := h.clients[recepientId]; ok {
+                user.conn.Write([]byte(sender.username + " => "))
+                user.conn.Write(append(message, '\n'))
+                // user.conn.Write([]byte("200 \n"))
+            } else {
+                sender.conn.Write([]byte("User has not been registered !!\n405\n"))
+            }
+        } else {
+            sender.conn.Write([]byte("Receipient must start with an @ !!\n405\n"))
+        }
+    }
+}
+```
 
 
 
