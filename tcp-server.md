@@ -386,6 +386,23 @@ func (h *serverHub) message(senderId string, recepientId string, message []byte)
 ```
 
 
+Now let's run the application with command `go run .`
+
+Open 2 new terminals and run `telnet 127.0.0.1 8081`, we use telnet as the http client (you might need to download telnet)
+
+Register users with command : `REG @username`
+
+Message other users with cmmand `MSG @username <length of message>|r|n<message> `
+
+
+## Running the server and connecting
+![Run server and connect](./startchatserver.png "Running the server and connecting via telnet")
+
+
+
+## Chatting Via server
+![chatting on server](./chatserver.png "Chatting via server")
+
 
 
 
