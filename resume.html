@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Resume | Uche Echesurum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Dark & White Contrast -->
+    <!-- Application Structure Plan: The SPA is designed as a narrative journey through Uche's career, prioritizing storytelling over a simple list. It starts with a Hero section for immediate impact. An 'About' section provides context. The 'Experience' section is an interactive timeline, allowing users to focus on specific roles. 'Projects' are presented as a filterable grid to showcase specific skills. The 'Skills' section uses an interactive chart to give a quick visual overview of expertise areas. This structure guides the user from a high-level summary to deep-dive details, making the consumption of information intuitive and engaging. -->
+    <!-- Visualization & Content Choices: 
+        - Hero/About: Goal=Inform. Method=Text Blocks. Justification=Provides immediate context and a personal summary.
+        - Experience: Goal=Change/Organize. Method=Interactive Timeline (HTML/JS). Interaction=Clicking on a role reveals its details. Justification=Visualizes career progression chronologically and reduces initial information overload.
+        - Impact Metrics (in Experience): Goal=Inform/Compare. Method=Dynamic Stats (HTML/JS). Interaction=Stats are tied to the selected role. Justification=Highlights key achievements with quantifiable data, making them more impactful than plain text.
+        - Projects: Goal=Organize/Explore. Method=Filterable Grid of Cards (HTML/JS). Interaction=Users can filter projects by technology. Justification=Allows recruiters to quickly find projects relevant to their needs.
+        - Skills: Goal=Compare/Inform. Method=Interactive Doughnut Chart (Chart.js/Canvas). Interaction=Hovering over chart segments reveals details and highlights related skills. Justification=Provides a quick, visually appealing summary of technical breadth and depth.
+        - CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+    -->
+</head>
+<body class="antialiased font-inter bg-gray-900 text-gray-100">
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-7xl">
+
+        <!-- Header / Hero Section -->
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-white">Uche Echesurum</h1>
+            <p class="mt-2 text-lg text-gray-300">Software Engineer | Platform & Data Engineering</p>
+            <div class="mt-4 flex justify-center space-x-4 text-indigo-400">
+                <a href="https://github.com/achay009" target="_blank" class="hover:text-white">GitHub</a>
+                <span>&bull;</span>
+                <a href="https://achay009.github.io" target="_blank" class="hover:text-white">Website</a>
+                <span>&bull;</span>
+                <a href="https://www.linkedin.com/in/uche-echesurum-570815184" target="_blank" class="hover:text-white">LinkedIn</a>
+            </div>
+        </header>
+
+        <main class="space-y-16">
+            <!-- About Section -->
+            <section id="about" class="bg-gray-800 rounded-lg p-8 shadow-xl">
+                <h2 class="text-2xl font-bold mb-4 text-white">About Me</h2>
+                <p class="text-base md:text-lg leading-relaxed text-gray-200">
+                    A highly motivated Software Engineer with over 4.5 years of experience developing scalable backend systems, data pipelines, and platform engineering solutions. I have a proven ability to lead technical initiatives, optimize system performance, and drive significant business impact across diverse tech stacks including Java, Go, Python, and AWS. I am passionate about leveraging my expertise in distributed systems and cloud infrastructure to solve challenging problems.
+                </p>
+            </section>
+            
+            <!-- Experience Section -->
+            <section id="experience">
+                <h2 class="text-2xl font-bold text-center mb-12 text-white">Career Journey</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1">
+                        <div id="timeline-nav" class="relative border-l-2 border-gray-700 ml-3">
+                            <!-- Timeline navigation items will be injected here -->
+                        </div>
+                    </div>
+                    <div id="experience-details" class="lg:col-span-2 bg-gray-800 rounded-lg p-8 shadow-xl transition-opacity duration-500 text-gray-200">
+                        <!-- Experience details will be rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects">
+                <h2 class="text-2xl font-bold text-center mb-4 text-white">Featured Projects</h2>
+                <p class="text-center text-gray-300 mb-8">Click on a technology to filter the projects.</p>
+                <div id="project-filters" class="flex flex-wrap justify-center gap-2 mb-8">
+                    <!-- Project filter tags will be injected here -->
+                </div>
+                <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Project cards will be rendered here -->
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills">
+                <h2 class="text-2xl font-bold text-center mb-12 text-white">Technical Skills</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative w-full max-w-[450px] mx-auto h-[300px] max-h-[400px] md:h-[350px] md:max-h-[400px]">
+                        <canvas id="skillsChart"></canvas>
+                    </div>
+                    <div id="skills-list" class="flex flex-wrap justify-center gap-3">
+                         <!-- Skill tags will be injected here -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        const resumeData = {
+            experience: [
+                {
+                    id: 'jpm',
+                    company: 'J.P. Morgan Chase & Co.',
+                    role: 'Software Engineer',
+                    duration: 'Sep 2022 – Present',
+                    location: 'U.K.',
+                    description: 'Focused on platform engineering, data infrastructure, and building scalable backend services within the financial technology sector.',
+                    points: [
+                        { text: 'Drove implementation of Prometheus/Grafana monitoring for ~50 Spring Boot apps.', impact: '15% Reduction in P1 Incidents' },
+                        { text: 'Architected a self-service Liquibase app, standardizing SQL deployments.', impact: '30% Reduction in Manual Errors' },
+                        { text: 'Spearheaded Oracle database migrations to new Data Centers.', impact: '20% Reduction in Migration Downtime' },
+                        { text: 'Built a high-throughput Kafka service for an ETL pipeline, serving 100+ consumers.', impact: 'Enabled Real-time BI' },
+                        { text: 'Migrated an on-prem ETL pipeline to PySpark on AWS Databricks.', impact: '4x Faster Processing Time' }
+                    ]
+                },
+                {
+                    id: 'patricia',
+                    company: 'Patricia Technologies/Glover App',
+                    role: 'Full Stack Software Developer',
+                    duration: 'Jan 2020 – Sep 2022',
+                    location: 'Lagos, Nigeria',
+                    description: 'Developed full-stack solutions, including internal tools, payment systems, and user-facing features for a rapidly growing FinTech platform.',
+                    points: [
+                        { text: 'Developed key modules for an internal CMS using NodeJS and GraphQL.', impact: '25% Reduction in Ops Overhead' },
+                        { text: 'Integrated Flutterwave Payment API for 2000+ daily active users.', impact: '10% Increase in Payment Success Rate' },
+                        { text: 'Implemented robust email and SMS-based 2FA authentication systems.', impact: '40% Reduction in Unauthorized Access' },
+                        { text: 'Mentored junior developers on Vue.js best practices.', impact: '15% Faster Frontend Delivery' }
+                    ]
+                }
+            ],
+            projects: [
+                {
+                    title: 'Codr',
+                    technologies: ['ReactJS', 'NextJS', 'Docker', 'GCP', 'AI/LLM'],
+                    description: 'A cutting-edge frontend project that leverages AI (LLM integration) to generate web project scaffolding on demand, accelerating initial development phases.',
+                    link: 'https://github.com/achay009'
+                },
+                {
+                    title: 'AWS CircleCI CI/CD Project',
+                    technologies: ['AWS', 'Ansible', 'Prometheus', 'CircleCI', 'CloudFormation'],
+                    description: 'Designed and automated a comprehensive CI/CD pipeline with CircleCI to deploy applications to AWS EC2, implementing IaC principles with Ansible and CloudFormation.',
+                    link: 'https://github.com/achay009'
+                },
+                {
+                    title: 'GO AST Interpreter',
+                    technologies: ['Go'],
+                    description: 'Developed a REPL around an Abstract Syntax Tree (AST) based interpreter for a custom C-style language, demonstrating deep understanding of compiler design.',
+                    link: 'https://github.com/achay009'
+                },
+                {
+                    title: 'C Shell Project',
+                    technologies: ['C'],
+                    description: 'A foundational shell-like program in C that forks commands into new processes, showcasing core operating system concepts and process management.',
+                    link: 'https://github.com/achay009'
+                }
+            ],
+            skills: {
+                categories: {
+                    'Backend & Languages': ['Java', 'Go', 'Python', 'SpringBoot', 'NodeJS', 'PHP'],
+                    'DevOps & Cloud': ['AWS', 'GCP', 'Terraform', 'Ansible', 'Docker', 'Jenkins', 'CircleCI'],
+                    'Data & Messaging': ['Kafka', 'PySpark', 'Hadoop', 'SQL', 'ETL'],
+                    'Frontend': ['JavaScript', 'TypeScript', 'ReactJS', 'NextJS', 'VueJS'],
+                    'Core CS': ['C', 'GraphQL', 'RESTful APIs', 'Microservices', 'System Design']
+                }
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const timelineNav = document.getElementById('timeline-nav');
+            const experienceDetails = document.getElementById('experience-details');
+            const projectsGrid = document.getElementById('projects-grid');
+            const projectFiltersContainer = document.getElementById('project-filters');
+
+            function renderExperience(experienceId) {
+                const experience = resumeData.experience.find(e => e.id === experienceId);
+                if (!experience) return;
+
+                document.querySelectorAll('.timeline-item').forEach(item => item.classList.remove('active'));
+                document.getElementById(`timeline-${experienceId}`).classList.add('active');
+
+                experienceDetails.style.opacity = 0;
+                setTimeout(() => {
+                    experienceDetails.innerHTML = `
+                        <h3 class="text-xl font-bold text-white">${experience.role}</h3>
+                        <p class="text-md text-gray-400">${experience.company} | ${experience.location}</p>
+                        <p class="text-sm text-gray-500 mb-4">${experience.duration}</p>
+                        <p class="mb-6 text-gray-200">${experience.description}</p>
+                        <ul class="space-y-4">
+                            ${experience.points.map(point => `
+                                <li class="flex items-start">
+                                    <span class="text-indigo-400 mr-3 mt-1">&#10003;</span>
+                                    <div>
+                                        <span class="text-gray-200">${point.text}</span>
+                                        <span class="block text-sm font-semibold text-gray-300 mt-1">Impact: ${point.impact}</span>
+                                    </div>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    `;
+                    experienceDetails.style.opacity = 1;
+                }, 300);
+            }
+
+            resumeData.experience.forEach(exp => {
+                const navItem = document.createElement('div');
+                navItem.id = `timeline-${exp.id}`;
+                navItem.className = 'timeline-item mb-8 pl-8 relative cursor-pointer group'; // Added group for hover effects
+
+                const markerDiv = document.createElement('div');
+                // Base marker color: gray-600, active: bg-indigo-500, border: gray-900 (body bg)
+                markerDiv.className = 'absolute w-5 h-5 rounded-full left-[-10px] top-0 bg-gray-600 border-3 border-gray-900 group-hover:bg-indigo-400 transition-colors duration-200';
+                navItem.appendChild(markerDiv);
+
+                navItem.innerHTML += `
+                    <h4 class="font-semibold text-gray-100 group-hover:text-white transition-colors duration-200">${exp.company}</h4>
+                    <p class="text-sm text-gray-400 group-hover:text-gray-300 transition-colors duration-200">${exp.role}</p>
+                `;
+                navItem.addEventListener('click', () => renderExperience(exp.id));
+                timelineNav.appendChild(navItem);
+            });
+            
+            renderExperience(resumeData.experience[0].id);
+
+            function renderProjects(filter = 'All') {
+                const filteredProjects = filter === 'All' 
+                    ? resumeData.projects 
+                    : resumeData.projects.filter(p => p.technologies.includes(filter));
+                
+                projectsGrid.innerHTML = filteredProjects.map(project => `
+                    <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
+                        <h3 class="text-lg font-bold mb-2 text-white">${project.title}</h3>
+                        <p class="text-sm text-gray-200 flex-grow">${project.description}</p>
+                        <div class="mt-4">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                ${project.technologies.map(tech => `<span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">${tech}</span>`).join('')}
+                            </div>
+                            <a href="${project.link}" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            const allProjectTechs = ['All', ...new Set(resumeData.projects.flatMap(p => p.technologies))];
+            projectFiltersContainer.innerHTML = allProjectTechs.map(tech => 
+                `<button class="project-tag px-4 py-2 text-sm font-medium bg-gray-700 text-gray-300 rounded-full transition-all duration-200 ease-in-out hover:translate-y-[-2px] hover:bg-indigo-500 hover:text-white" data-filter="${tech}">${tech}</button>`
+            ).join('');
+            
+            projectFiltersContainer.addEventListener('click', e => {
+                if (e.target.tagName === 'BUTTON') {
+                    const filter = e.target.dataset.filter;
+                    document.querySelectorAll('.project-tag').forEach(tag => tag.classList.remove('active', 'bg-indigo-500', 'text-white'));
+                    e.target.classList.add('active', 'bg-indigo-500', 'text-white');
+                    renderProjects(filter);
+                }
+            });
+            
+            document.querySelector('.project-tag[data-filter="All"]').classList.add('active', 'bg-indigo-500', 'text-white');
+            renderProjects();
+
+            const skillsList = document.getElementById('skills-list');
+            const skillCategories = resumeData.skills.categories;
+            const categoryLabels = Object.keys(skillCategories);
+            const categoryData = categoryLabels.map(cat => skillCategories[cat].length);
+            const allSkills = Object.values(skillCategories).flat();
+
+            skillsList.innerHTML = allSkills.map(skill => `<span class="skill-tag cursor-pointer bg-gray-700 text-gray-300 px-3 py-1 rounded-md transition-all duration-200 ease-in-out hover:translate-y-[-2px] hover:bg-indigo-500 hover:text-white">${skill}</span>`).join('');
+
+            const ctx = document.getElementById('skillsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: categoryLabels,
+                    datasets: [{
+                        label: 'Skills Distribution',
+                        data: categoryData,
+                        backgroundColor: [
+                            'rgba(103, 128, 159, 0.7)', // Slightly muted blue
+                            'rgba(120, 149, 178, 0.7)', // Lighter blue
+                            'rgba(142, 177, 209, 0.7)', // Even lighter blue
+                            'rgba(165, 206, 239, 0.7)', // Lightest blue
+                            'rgba(188, 235, 255, 0.7)', // Almost white blue
+                        ],
+                        borderColor: '#111827', // Body background color
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#E5E7EB', // Tailwind text-gray-200 for legend labels
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    const category = context.label;
+                                    const skills = skillCategories[category].join(', ');
+                                    return `${category}: ${skills}`;
+                                }
+                            },
+                            bodyFont: {
+                                size: 12
+                            },
+                            padding: 10,
+                            displayColors: false,
+                            backgroundColor: '#1F2937', // Darker background for tooltip
+                            titleColor: '#F9FAFB', // Light title
+                            bodyColor: '#D1D5DB', // Lighter body text
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

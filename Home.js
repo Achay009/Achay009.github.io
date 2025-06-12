@@ -55,10 +55,9 @@ export default class extends AbstractView {
                             <a href="https://www.linkedin.com/in/uche-echesurum-570815184/" target="_blank" rel="noopener noreferrer" class="cursor-pointer">
                                 <i class="fab fa-linkedin-in fa-fw text-2xl transition-transform duration-300"></i>
                             </a>
-                            <a href="https://docs.google.com/document/d/1kTSwL_uQartXpqT8cMNp7lZ6kb7G-3n4c3lWRlqNfCc/edit?usp=sharing" target="_blank" rel="noopener noreferrer"
-                            class="cursor-pointer">
-                                <i class="fas fa-file-alt fa-fw mr-3 text-2xl transition-transform duration-300"></i>
-                            </a>
+
+                            <a href="/resume.html" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Resume &rarr;</a>
+                            
                         </span>
                     </header>
                 </article>
@@ -111,7 +110,10 @@ export default class extends AbstractView {
 
 
 
-
+{/* <a href="/resume.html" target="_blank" rel="noopener noreferrer"
+                            class="cursor-pointer">
+                                <i class="fas fa-file-alt fa-fw mr-3 text-2xl transition-transform duration-300"></i>
+                            </a> */}
 
 
 
