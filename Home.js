@@ -38,7 +38,7 @@ export default class extends AbstractView {
                     <header class="mb-4 lg:mb-6 not-format">
                         <address class="flex items-center mb-6 not-italic">
                             <div class=" mr-3 text-sm text-gray-900 dark:text-white">
-                                <img class=" w-40 h-40 mx-auto rounded-full" src="https://firebasestorage.googleapis.com/v0/b/react-my-burger-26c0d.appspot.com/o/profile.jpeg?alt=media&token=3f4ea7fb-86fe-42ad-aabd-b8f1f5137cdd" alt="">
+                                <img class=" w-40 h-40 mx-auto rounded-full" src="./profile.jpeg" alt="">
                                 <div class="flex flex-col mt-4 space-y-4 justify-center">
                                     <h1 class="text-4xl mx-auto font-bold text-gray-900 dark:text-white">Hello, I am Uche😅 !!</h1>
                                     <p class="text-xl text-gray-500 dark:text-gray-400 font-medium">
