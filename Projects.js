@@ -39,20 +39,57 @@ export default class extends AbstractView {
                     
 
 
-                    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
-                                <h3 class="text-lg font-bold mb-2 text-white">Latch Go</h3>
-                                <p class="text-sm text-gray-200 flex-grow">Developed a REPL around an Abstract Syntax Tree (AST) based interpreter for a custom C-style language, demonstrating deep understanding of compiler design.</p>
-                                <div class="mt-4">
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Go</span>
+                        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
+                                    <h3 class="text-lg font-bold mb-2 text-white">Tunnelsh</h3>
+                                    <p class="text-sm text-gray-200 flex-grow"> Built and Deployed on a VPS A Reverse tunneling application with a client and server component that lets aids in exposing local applications to the web by providing public URLs to localhost applications</p>
+                                    <div class="mt-4">
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Go</span>
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">NextJS</span>
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Nginx</span>
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Docker</span>
+                                        </div>
+                                        <a href="https://tunnelsh.top" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
                                     </div>
-                                    <a href="https://github.com/Achay009/latch_go" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
                                 </div>
-                            </div>
-                    </div>
 
+                                <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
+                                    <h3 class="text-lg font-bold mb-2 text-white">Tunnelshd</h3>
+                                    <p class="text-sm text-gray-200 flex-grow">Client Application to Tunnelsh used to create secure https tunnels to expose local applications to the web </p>
+                                    <div class="mt-4">
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Go</span>
+                                        </div>
+                                        <a href="https://github.com/Achay009/tunnelshd" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
+                                    </div>
+                                </div>
 
+                                <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
+                                    <h3 class="text-lg font-bold mb-2 text-white">Latch Go</h3>
+                                    <p class="text-sm text-gray-200 flex-grow">Developed a REPL around an Abstract Syntax Tree (AST) based interpreter for a custom C-style language, demonstrating deep understanding of compiler design.</p>
+                                    <div class="mt-4">
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Go</span>
+                                        </div>
+                                        <a href="https://github.com/Achay009/latch_go" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
+                                    </div>
+                                </div>
+
+                                <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
+                                    <h3 class="text-lg font-bold mb-2 text-white">Codr</h3>
+                                    <p class="text-sm text-gray-200 flex-grow">A cutting-edge frontend project that leverages AI (LLM integration) to generate web project scaffolding on demand, accelerating initial development phases.</p>
+                                    <div class="mt-4">
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">NextJS</span>
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Docker</span>
+                                        </div>
+                                        <a href="https://codr-prod.civai.co/" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
+                                    </div>
+                                </div>
+                        </div>
+
+                        
                     </div>
                 </div>
             </div>
