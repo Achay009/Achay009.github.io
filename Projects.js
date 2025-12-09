@@ -87,9 +87,18 @@ export default class extends AbstractView {
                                         <a href="https://codr-prod.civai.co/" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
                                     </div>
                                 </div>
+                                <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
+                                    <h3 class="text-lg font-bold mb-2 text-white">My Website</h3>
+                                    <p class="text-sm text-gray-200 flex-grow">This entire website is a SPA(Single page Application) built with just HTML/CSS and JS</p>
+                                    <div class="mt-4">
+                                        <div class="flex flex-wrap gap-2 mb-4">
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">HTML/CSS</span>
+                                            <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">JS</span>
+                                        </div>
+                                        <a href="https://github.com/Achay009/Achay009.github.io" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
+                                    </div>
+                                </div>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>
