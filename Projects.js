@@ -50,7 +50,7 @@ export default class extends AbstractView {
                                             <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Nginx</span>
                                             <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Docker</span>
                                         </div>
-                                        <a href="https://tunnelsh.top" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
+                                        <a href="https://tunnelsh.dev" target="_blank" class="font-semibold text-indigo-400 hover:underline">View Project &rarr;</a>
                                     </div>
                                 </div>
 
