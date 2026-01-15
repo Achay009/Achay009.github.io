@@ -41,7 +41,7 @@ export default class extends AbstractView {
 
                         <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
-                                    <h3 class="text-lg font-bold mb-2 text-white">Tunnelsh</h3>
+                                    <h3 class="text-lg font-bold mb-2 text-white">Tunnelsh.dev</h3>
                                     <p class="text-sm text-gray-200 flex-grow"> Built and Deployed on a VPS A Reverse tunneling application with a client and server component that lets aids in exposing local applications to the web by providing public URLs to localhost applications</p>
                                     <div class="mt-4">
                                         <div class="flex flex-wrap gap-2 mb-4">
@@ -56,7 +56,7 @@ export default class extends AbstractView {
 
                                 <div class="bg-gray-800 rounded-lg p-6 shadow-xl flex flex-col">
                                     <h3 class="text-lg font-bold mb-2 text-white">Tunnelshd</h3>
-                                    <p class="text-sm text-gray-200 flex-grow">Client Application to Tunnelsh used to create secure https tunnels to expose local applications to the web </p>
+                                    <p class="text-sm text-gray-200 flex-grow">Client Application to Tunnelsh.dev used to create secure https tunnels to expose local applications to the web </p>
                                     <div class="mt-4">
                                         <div class="flex flex-wrap gap-2 mb-4">
                                             <span class="text-xs bg-gray-700 text-gray-300 px-2 py-1 rounded-full">Go</span>
